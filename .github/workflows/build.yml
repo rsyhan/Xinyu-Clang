@@ -1,0 +1,16 @@
+name: Build & upload toolchain
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download scripts
+        uses: actions/checkout@v2
+
+      - name: Xinyu Clang Builder
+        run: |
+          ci/build_agent.sh

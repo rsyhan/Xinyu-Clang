@@ -11,14 +11,15 @@ function msg() {
 # Build LLVM
 msg "Building LLVM..."
 ./build-llvm.py \
-	--clang-vendor "LiuNian-$(date +%Y%m%d)" \
+	--clang-vendor "Xinyu" \
 	--targets "ARM;AArch64;X86" \
 	--update \
 	--incremental \
+	--pgo \
+	--lto "full" \
 	--build-stage1-only \
 	--install-stage1-only \
-	--install-folder "installTmp" \
-	--additional-build-arguments "CLANG_REPOSITORY_STRING=GitHub.COM/WLoot"
+	--install-folder "installTmp"
 
 # Build binutils
 msg "Building binutils..."

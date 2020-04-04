@@ -1,0 +1,23 @@
+kind: pipeline
+name: Xinyu Clang LLVM Toolchain CI
+
+platform:
+  os: linux
+  arch: amd64
+
+clone:
+  depth: 1
+
+steps:
+  - name: Xinyu Clang LLVM Builder
+    image: ubuntu:19.10
+    environment:
+      GITID:
+        from_secret: GITID
+      GITPWD:
+        from_secret: GITPWD
+    commands:
+      - apt-get update && apt-get install -y sudo lld bison ca-certificates ccache clang cmake curl file flex gcc g++ git make ninja-build python3 texinfo zlib1g-dev libssl-dev libelf-dev patchelf
+      - export HOME=/drone
+      - cd /drone/src
+      - bash ./ci/build_agent.sh
