@@ -17,8 +17,6 @@ msg "Building LLVM..."
 	--incremental \
 	--pgo \
 	--lto "full" \
-	--build-stage1-only \
-	--install-stage1-only \
 	--install-folder "installTmp"
 
 # Build binutils
